@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #00e0e0, #ff55ff, #ff5e5e, #a020f0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .signup-box {
+        background-color: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #333;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    form div {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    label {
+        text-align: left;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[name="shop_name"],
+    input[name="shop_address"],
+    input[name="phone_number"],
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        font-size: 15px;
+        box-sizing: border-box;
+        background-color: #fefefe;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: #6a11cb;
+        box-shadow: 0 0 6px rgba(106, 17, 203, 0.4);
+        outline: none;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    button {
+        padding: 12px;
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #5011b3, #1d63d6);
+    }
+
+    .error-message {
+        color: #dc3545;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-top: 15px;
+        color: #555;
+    }
+
+    a {
+        color: #6a11cb;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+    <div class="signup-box">
+        <h1>Create Account</h1>
+        {% if error %}<p class="error-message">{{ error }}</p>{% endif %}
+        <form method="POST">
+            <div>
+                <input type="text" name="username" placeholder="Enter Username" required>
+                <input name="shop_name" placeholder="Shop Name" required>
+                <input name="shop_address" placeholder="Shop Address" required>
+                <input name="contact_email" type="email" placeholder="Contact Email" required>
+                <input name="phone_number" placeholder="Phone Number" required>
+                <textarea name="shop_description" placeholder="Short Description of Your Shop"></textarea>
+                <input type="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+</body>
+</html>

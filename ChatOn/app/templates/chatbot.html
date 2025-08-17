@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Assistant Chatbot</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #00e0e0, #ff55ff, #ff5e5e, #a020f0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 20px 20px 10px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 10px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero .tagline {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .demo-container {
+      width: 100%;
+      max-width: 800px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+      margin-bottom: 20px;
+    }
+
+    .demo-container h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px 12px 0 0;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    #chatbox {
+      width: 96%;
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ced4da;
+      background-color: #fefefe;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    #chatbox div {
+      margin: 8px 0;
+      line-height: 1.5;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+
+    input#user_input {
+      flex: 1;
+      padding: 12px;
+      font-size: 15px;
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      background-color: #fefefe;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input#user_input:focus {
+      border-color: #6a11cb;
+      box-shadow: 0 0 6px rgba(106, 17, 203, 0.4);
+      outline: none;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #5011b3, #1d63d6);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .button-link {
+      padding: 10px 20px;
+      text-decoration: none;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+    }
+
+    .button-link:hover {
+      background: linear-gradient(90deg, #5011b3, #1d63d6);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      font-size: 0.9rem;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Product Assistant Chatbot</h1>
+    <div class="tagline">Instant Help with Your Products</div>
+  </div>
+
+  <div class="demo-container">
+    <h2>Chat Assistant</h2>
+    <div id="chatbox"></div>
+    <div class="input-group">
+      <input type="text" id="user_input" placeholder="Type your question..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <!-- Sign Up & Login Buttons -->
+  <div class="button-group">
+    <a href="/signup" class="button-link">Sign Up</a>
+    <a href="/login" class="button-link">Login</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Product Assistant. All rights reserved.
+  </footer>
+
+  <script>
+    function sendMessage() {
+      let message = $("#user_input").val().trim();
+      if (!message) return;
+
+      $("#chatbox").append("<div><b>You:</b> " + $("<div>").text(message).html() + "</div>");
+
+      $.ajax({
+        type: "POST",
+        url: "/webhook",
+        contentType: "application/json",
+        data: JSON.stringify({ message: message }),
+        success: function (data) {
+          let response = data.response;
+          $("#chatbox").append("<div><b>Assistant:</b> " + $("<div>").text(response).html() + "</div>");
+          $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+        },
+        error: function () {
+          $("#chatbox").append("<div><b>Error:</b> Could not connect to the assistant.</div>");
+          $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+        }
+      });
+
+      $("#user_input").val("");
+    }
+
+    // Handle Enter key
+    $("#user_input").keypress(function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>

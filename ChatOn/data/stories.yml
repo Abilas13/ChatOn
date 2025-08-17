@@ -1,0 +1,86 @@
+version: "3.1"
+
+stories:
+
+# Simple greetings and mood handling
+- story: Happy path
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_great
+    - action: utter_happy
+
+- story: Sad path 1
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - intent: affirm
+    - action: utter_happy
+
+- story: Sad path 2
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+
+
+
+# Main product inquiry flow
+- story: Product inquiry with follow-ups
+  steps:
+    - intent: asking_about_product
+    - action: action_check_availability
+    - intent: ask_price
+    - action: action_getting_price
+    - intent: ask_description
+    - action: action_getting_description
+    - intent: ask_brand
+    - action: action_getting_brand
+    - intent: ask_size
+    - action: action_getting_size
+    - intent: search_product_by_description
+    - action: action_search_by_description
+
+
+# ✅ Feedback stories (Option 2 version — no "utter_ask_feedback_details")
+- story: Provide feedback after inquiry
+  steps:
+    - intent: asking_about_product
+    - action: action_check_availability
+    - intent: give_feedback
+    - action: action_store_feedback
+
+
+- story: Give feedback without inquiry
+  steps:
+    - intent: give_feedback
+    - action: action_store_feedback
+
+
+- story: Provide sentiment in feedback
+  steps:
+    - intent: provide_sentiment
+    - action: action_store_feedback
+
+
+# Feedback summary story
+- story: Ask feedback summary
+  steps:
+    - intent: ask_feedback_summary
+    - action: action_query_feedback_summary
+
+# Product contact and location inquiries
+- story: Ask for shop location
+  steps:
+    - intent: ask_location
+    - action: action_getting_location
+
+- story: Ask for contact information
+  steps:
+    - intent: ask_contact
+    - action: action_getting_contact

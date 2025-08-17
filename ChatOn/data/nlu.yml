@@ -1,0 +1,563 @@
+version: "3.1"
+
+nlu:
+
+# ------------- Small Talk ----------------
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - good afternoon
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you later
+    - bye bye
+    - see you around
+    - have a nice day
+    - good night
+    - cu
+    - see you
+    - cee you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - yeah
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+
+- intent: thanks
+  examples: |
+    - thanks
+    - thank you
+    - thanks a lot
+    - ok
+    - appreciate it
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - is this automated?
+    - is this a real person?
+
+
+
+# ------------- Product Inquiries ----------------
+- intent: ask_price
+  examples: |
+    - how much is it
+    - how much it is
+    - how much does it cost
+    - what does it cost
+    - what's the price
+    - cost
+    - price please
+    - what is the price of [Shampoo Pro](product_name)?
+    - what's the price of [shampoo pro](product_name)?
+    - how much does [Shampoo Pro](product_name) cost?
+    - how much is [shampo pro](product_name)?
+    - can you tell me the price of [Face Wash Plus](product_name)?
+    - do you know the cost of [face wash plus](product_name)?
+    - what's the cost of [Toothpaste Z](product_name)?
+    - how expensive is [Face Cream X](product_name)?
+    - is [face cream x](product_name) affordable?
+    - I want to know the price of [Lotion Soft](product_name)
+    - how much would I pay for [Hair Oil Green](product_name)?
+    - price of [hair oil green](product_name)?
+    - give me the price of [Lotion Soft](product_name)
+    - what's the selling price of [Shampoo Pro](product_name)?
+    - how much am I paying for [Face Wash Plus](product_name)?
+    - I would like to know the cost of [Toothpaste Z](product_name)
+    - please share the cost of [Lotion Soft](product_name)
+    - is [Face Cream X](product_name) expensive?
+    - how much is [Hair Oil Green](product_name) priced at?
+    - what does [Face Cream X](product_name) go for?
+    - do you have the price for [Lotion Soft](product_name)?
+    - how much is a bottle of [Hair Oil Green](product_name)?
+    - what are you selling [Face Wash Plus](product_name) for?
+    - how much is one [Shampoo Pro](product_name)?
+    - [Face Cream X](product_name) price please
+    - [Toothpaste Z](product_name) cost?
+    - tell me price of [Face Wash Plus](product_name)
+    - any idea what [Shampoo Pro](product_name) costs?
+    - I’d like to check the price of [Lotion Soft](product_name)
+
+
+- intent: ask_brand
+  examples: |
+    - what brand is it?
+    - what is the brand?
+    - what is the brand of this?
+    - can you tell me the brand?
+    - who makes this product?
+    - what company is it from?
+    - what brand is [Shampoo Pro](product_name)?
+    - which brand makes [Toothpaste Z](product_name)?
+    - who manufactures [Face Cream X](product_name)?
+    - I'd like to know the brand of [Lotion Soft](product_name)
+    - what company produces [Soap Fresh](product_name)?
+    - what's the brand name of [Lip Balm Rose](product_name)?
+    - do you know which brand [Face Cream X](product_name) belongs to?
+    - which company makes [Face Cream X](product_name)?
+    - what is the label for [Shampoo Pro](product_name)?
+    - what brand label does [Toothpaste Z](product_name) have?
+    - tell me the brand name of [Lip Balm Rose](product_name)
+    - what brand does [Lotion Soft](product_name) come from?
+    - any idea which brand [Soap Fresh](product_name) is?
+    - what company is behind [Lip Balm Rose](product_name)?
+    - who is the maker of [Face Cream X](product_name)?
+    - could you tell me who makes [Toothpaste Z](product_name)?
+    - brand?
+    - brand name?
+    - who is the maker?
+    - who produces it?
+    - which company makes it?
+    - what company is this?
+    - which brand are you selling?
+    - do you know who makes it?
+    - what label is it?
+    - tell me who makes it
+    - could you tell me the brand?
+    - any idea which brand this is?
+    - I'd like to know the company
+    - do you know the maker?
+
+
+- intent: ask_size
+  examples: |
+    - what is the size of it?
+    - what is the size?
+    - what size is it?
+    - what is its size?
+    - can you tell me the size?
+    - can you share the size info?
+    - do you know the size of [Shampoo Pro](product_name)?
+    - how big is [Body Lotion Silk](product_name)?
+    - what is the size of [Shampoo Pro](product_name)?
+    - which size is [Shampoo Pro](product_name)?
+    - how much does [Face Wash Plus](product_name) weigh?
+    - what's the volume of [Toothpaste Z](product_name)?
+    - what's the net weight of [Toothpaste Z](product_name)?
+    - what pack size does [Night Cream Glow](product_name) have?
+    - what packaging size does [Herbal Shampoo](product_name) come in?
+    - how many ml is [Body Lotion Silk](product_name)?
+    - how many grams is it?
+    - how many milliliters?
+    - how much does [Night Cream Glow](product_name) contain?
+    - what is the quantity of [Herbal Shampoo](product_name)?
+    - in what quantity does [Face Wash Plus](product_name) come?
+    - what's the amount it comes in?
+    - how large is the pack of [Night Cream Glow](product_name)?
+    - can you tell me how much it weighs?
+    - what’s the capacity?
+    - how much is in it?
+    - any idea about the volume?
+    - size?
+    - tell me the size of this
+    - can you share the quantity?
+    - what pack does [Night Cream Glow](product_name) come in?
+    - which pack size is this?
+    - do you have the size info?
+    - what's the weight?
+    - weight?
+    - volume?
+    - quantity?
+    - how heavy is it?
+
+
+- intent: ask_description
+  examples: |
+    - What is [Shampoo Pro](product_name)?
+    - Tell me about [Face Wash Plus](product_name)
+    - Can you describe [Toothpaste Z](product_name)?
+    - What does [Lotion Soft](product_name) do?
+    - What are the benefits of [Lip Balm Rose](product_name)?
+    - What's inside [Sunblock SPF 50](product_name)?
+    - Could you explain [Shampoo Pro](product_name)?
+    - I want to know what [Face Wash Plus](product_name) is
+    - What can [Toothpaste Z](product_name) be used for?
+    - Give me some details about [Lotion Soft](product_name)
+    - Describe [Lip Balm Rose](product_name) for me
+    - Tell me what [Sunblock SPF 50](product_name) does
+    - What’s the purpose of [Shampoo Pro](product_name)?
+    - What’s this product [Face Wash Plus](product_name)?
+    - Do you have any info about [Toothpaste Z](product_name)?
+    - What does [Lotion Soft](product_name) help with?
+    - How does [Lip Balm Rose](product_name) work?
+    - What’s special about [Sunblock SPF 50](product_name)?
+    - Why should I use [Shampoo Pro](product_name)?
+    - What are the features of [Face Wash Plus](product_name)?
+    - Give me the description of [Toothpaste Z](product_name)
+    - Can you tell me what [Lotion Soft](product_name) is good for?
+    - I’d like a description of [Lip Balm Rose](product_name)
+    - What does [Sunblock SPF 50](product_name) contain?
+    - What are the ingredients in [Shampoo Pro](product_name)?
+    - What kind of product is [Face Wash Plus](product_name)?
+    - Product info for [Toothpaste Z](product_name)
+    - What's this [Lotion Soft](product_name)?
+    - Tell me what it's used for
+    - What does it do?
+    - Can you describe it?
+    - What is this?
+    - What does this product do?
+    - Give me details
+    - Tell me what it is
+    - What’s this product for?
+    - What is it used for?
+    - How do I use [Shampoo Pro](product_name)?
+    - What effects does [Face Wash Plus](product_name) have?
+    - Any information on [Toothpaste Z](product_name)?
+    - Can you share some info about [Lotion Soft](product_name)?
+    - Give me a quick summary of [Lip Balm Rose](product_name)
+    - What's the use of [Sunblock SPF 50](product_name)?
+    - Tell me the advantages of [Shampoo Pro](product_name)
+    - What makes [Face Wash Plus](product_name) unique?
+    - Is [Toothpaste Z](product_name) good for sensitive teeth?
+    - What should I know about [Lotion Soft](product_name)?
+    - Any details about [Lip Balm Rose](product_name)?
+    - What’s it for?
+
+
+- intent: asking_about_product
+  examples: |
+    - Is [Shampoo Pro](product_name) available?
+    - Do you have [Face Wash Plus](product_name)?
+    - Can I get [Toothpaste Z](product_name)?
+    - Is [Face Cream X](product_name) in stock?
+    - Do you sell [Toner Bright](product_name)?
+    - Are you selling [Sunblock SPF 50](product_name)?
+    - Is [Shampoo Pro](product_name) in your store?
+    - Do you carry [Face Wash Plus](product_name)?
+    - Can I buy [Toothpaste Z](product_name) here?
+    - Is [Face Cream X](product_name) still available?
+    - Are there any [Toner Bright](product_name) left?
+    - Is [Sunblock SPF 50](product_name) on hand?
+    - Do you keep [Shampoo Pro](product_name) in stock?
+    - I want to know if you have [Face Wash Plus](product_name)
+    - Do you currently have [Toothpaste Z](product_name)?
+    - Can you check if [Face Cream X](product_name) is available?
+    - Is it possible to get [Toner Bright](product_name)?
+    - Do you offer [Sunblock SPF 50](product_name)?
+    - Do you stock [Shampoo Pro](product_name)?
+    - Could I order [Face Wash Plus](product_name)?
+    - Is [Toothpaste Z](product_name) purchasable now?
+    - Do you have any [Face Cream X](product_name) in store?
+    - Are you carrying [Toner Bright](product_name)?
+    - Can I order [Sunblock SPF 50](product_name) from you?
+    - Is there [Shampoo Pro](product_name) available right now?
+    - Can I get this product?
+    - Do you have this product?
+    - Is this available?
+    - Do you sell this?
+    - Is it in stock?
+    - Can I buy it now?
+    - Are you offering this item?
+    - Do you keep this in your shop?
+
+
+
+- intent: search_product
+  examples: |
+    - I want to find [Dove shampoo](product_name)
+    - Do you have [Sunsilk conditioner](product_name)?
+    - Show me [Pantene](product_name)
+    - Search for [Herbal Shampoo](product_name)
+    - Find [Charcoal Face Wash](product_name)
+    - Can you find [Aloe Vera Gel](product_name)?
+    - Look for [Nivea cream](product_name)
+    - I’m looking for [Head & Shoulders](product_name)
+    - Help me find [Olay moisturizer](product_name)
+    - Please search [VLCC face wash](product_name)
+    - Could you show me [Biotique toner](product_name)?
+    - I need [Dove shampoo](product_name)
+    - Search and show [Garnier serum](product_name)
+    - Locate [Pond's cold cream](product_name) for me
+    - Try finding [Mamaearth lotion](product_name)
+    - Do you carry [Himalaya face wash](product_name)?
+    - Can I look up [Lotus sunscreen](product_name)?
+    - Look up [Nivea body lotion](product_name) for me
+    - Get me [Vaseline body gel](product_name)
+    - Can I search for [Dabur honey](product_name)?
+    - I’m trying to find [Colgate MaxFresh](product_name)
+    - I want to browse [Pantene conditioner](product_name)
+    - Please help me search for [L’Oréal shampoo](product_name)
+    - I'm looking to buy [Patanjali aloe gel](product_name)
+    - Show products like [Shampoo Pro](product_name)
+    - Search a product
+    - Search for a product
+    - I want to find something
+    - Can I look for a product?
+    - Help me look up something
+    - I'm searching a product
+
+
+
+
+- intent: ask_location
+  examples: |
+    - where i can get?
+    - Where can I buy [Shampoo Pro](product_name)?
+    - Where is the shop for [Sunblock SPF 50](product_name)?
+    - What is the location for [Face Wash Plus](product_name)?
+    - Where can I purchase [Toothpaste Z](product_name)?
+    - Where do you sell [Lotion Soft](product_name)?
+    - Where can I find [Face Cream X](product_name)?
+    - Tell me where to get [Herbal Shampoo](product_name)
+    - Where is it available?
+    - Where do you have it in stock?
+    - Where can this be bought?
+    - Where can I pick up [Lip Balm Rose](product_name)?
+    - What shop has [Night Cream Glow](product_name)?
+    - Where do you keep [Body Lotion Silk](product_name)?
+    - Where can I order [Shampoo Pro](product_name)?
+    - Where do you have [Sunblock SPF 50](product_name) for sale?
+    - Where could I get [Face Wash Plus](product_name)?
+    - Where is your store?
+    - Where is the nearest shop?
+    - Where can I get it?
+    - Can you tell me the shop location?
+    - In which store can I find this?
+    - Where can I get this product?
+    - Where can I buy it?
+    - Which outlet has it?
+    - Where is this product available?
+    - Where to buy?
+    - Where do you have this?
+
+
+
+- intent: ask_contact
+  examples: |
+    - How do I contact the seller of [Sunblock SPF 50](product_name)?
+    - Contact details for [Face Cream X](product_name)?
+    - How to reach the shop that sells [Toothpaste Z](product_name)?
+    - Can you give me the phone number for [Shampoo Pro](product_name)?
+    - How can I get in touch about [Face Wash Plus](product_name)?
+    - What is the contact info for [Lotion Soft](product_name)?
+    - I’d like to have the seller's details for [Lip Balm Rose](product_name)
+    - Provide contact information for [Herbal Shampoo](product_name)
+    - How to connect with the store selling [Night Cream Glow](product_name)?
+    - Could you share the contact number for [Body Lotion Silk](product_name)?
+    - Who do I contact about [Charcoal Face Wash](product_name)?
+    - How can I reach out about [Sunsilk conditioner](product_name)?
+    - Seller phone number for [Nivea cream](product_name)?
+    - How do I call the shop for [Olay moisturizer](product_name)?
+    - What’s the best way to contact you?
+    - How can I get in touch?
+    - Give me your contact info
+    - What is your phone number?
+    - How do I contact you?
+    - Can I have the contact details?
+    - How to contact you?
+    - I need your contact information
+    - What’s your email?
+    - How to reach you?
+    - Who can I call?
+    - Can I get a phone number?
+    - How to connect with you?
+
+
+
+# ------------- Feedback ----------------
+- intent: give_feedback
+  examples: |
+    - I love this product
+    - It's not very good
+    - The size was perfect
+    - Quality could be better
+    - This product is amazing
+    - I am very happy with this product
+    - I am disappointed in this product
+    - I really like it
+    - This is fantastic
+    - I hate this product
+    - I'm not satisfied
+    - I'm very satisfied
+    - This is exactly what I wanted
+    - It didn't meet my expectations
+    - It's better than I expected
+    - I’m not happy with this
+    - It’s okay, not great
+    - This is terrible
+    - Wonderful product
+    - It works well for me
+    - I’m pleased with my purchase
+    - This didn’t work for me
+    - The quality is excellent
+    - The packaging was damaged
+    - I am impressed
+    - Completely satisfied
+    - I wouldn’t recommend this
+    - I’m grateful for this product
+    - The product is defective
+    - Very poor quality
+    - It’s decent
+    - Absolutely love it
+    - It’s the best I’ve used
+    - Not worth the money
+    - I want to return this
+    - I’m very disappointed
+    - It’s just okay
+    - Exceeded my expectations
+    - Very good quality
+    - The product quality is excellent
+    - I liked the size and color
+    - It was a bit expensive
+    - The delivery was fast
+    - I found it very useful
+    - Not satisfied with the packaging
+    - The product didn't match the description
+    - Great value for the price
+    - I would recommend this
+    - Customer service was helpful
+    - The packaging was damaged
+    - The product arrived late
+    - Very happy with the purchase
+    - The size was smaller than expected
+    - The color was different from the picture
+    - I am pleased with the shipping time
+    - The instructions were clear
+    - It worked exactly as described
+    - The price was reasonable
+    - I had issues with the delivery
+    - The seller was very responsive
+    - I liked the texture of the product
+    - The product exceeded my expectations
+    - The warranty information was missing
+    - I will buy this again
+    - It didn’t work for me
+    - The product is durable
+    - I’m happy with the quality
+    - The color faded quickly
+    - The product is easy to use
+    - The customer support resolved my issue
+
+
+- intent: ask_feedback_summary
+  examples: |
+    - What do people think about [Shampoo Pro](product_name)?
+    - Show me reviews for [Face Wash Plus](product_name)
+    - Are there any opinions about [Toothpaste Z](product_name)?
+    - What is the feedback on [Face Cream X](product_name)?
+    - Tell me if people like [Hair Oil Green](product_name)
+    - Any reviews about [Body Wash Ultra](product_name)?
+    - Can you show me customer feedback for [Shampoo Pro](product_name)?
+    - What are the ratings for [Face Wash Plus](product_name)?
+    - Do people like [Toothpaste Z](product_name)?
+    - How do users feel about [Face Cream X](product_name)?
+    - Are there any comments on [Hair Oil Green](product_name)?
+    - What do customers say about [Body Wash Ultra](product_name)?
+    - Give me reviews on [Shampoo Pro](product_name)
+    - What’s the user opinion on [Face Wash Plus](product_name)?
+    - Is [Toothpaste Z](product_name) well-reviewed?
+    - What do buyers say about [Face Cream X](product_name)?
+    - Are there any ratings for [Hair Oil Green](product_name)?
+    - Can I see feedback on [Body Wash Ultra](product_name)?
+    - How is the customer feedback for [Shampoo Pro](product_name)?
+    - Tell me if [Face Wash Plus](product_name) is popular
+    - Any user reviews for [Toothpaste Z](product_name)?
+    - What do people think of this product?
+    - Show me reviews for this product
+    - Are there any opinions about this product?
+    - What is the feedback on this product?
+    - Tell me if people like this product
+    - Any reviews about this product?
+
+
+
+- intent: provide_sentiment
+  examples: |
+    - It was positive
+    - Positive
+    - I had a great experience
+    - It was good
+    - I really liked it
+    - Loved it
+    - Fantastic
+    - Excellent
+    - I didn’t like it
+    - Negative
+    - It was bad
+    - Very bad experience
+    - Terrible
+    - Not satisfied
+    - Could be better
+    - Neutral
+    - So-so
+    - Mixed feelings
+    - Neither good nor bad
+    - It was okay
+    - Meh
+    - I’m indifferent
+    - Not sure how I feel
+    - Somewhat satisfied
+    - Somewhat disappointed
+
+
+
+- intent: search_product_by_description
+  examples: |
+    - I want something moisturizing and gentle
+    - Show me a shampoo for sensitive skin
+    - I am looking for a strong cleaning detergent
+    - Need a baby product with aloe vera
+    - good for hair
+    - Looking for a face wash that’s refreshing
+    - Find me a lotion that hydrates well
+    - I want a sunscreen with SPF 50
+    - Show products suitable for dry skin
+    - Looking for an oil control moisturizer
+    - Need something natural and organic
+    - Can you find a shampoo that reduces dandruff?
+    - I want a conditioner for damaged hair
+    - Show me creams for acne-prone skin
+    - Need a product with vitamin E
+    - Find a body wash that smells fresh
+    - Looking for gentle products for kids
+    - I want something fragrance-free
+    - Show me products with herbal ingredients
+    - Looking for a night cream with antioxidants
+    - Need a face scrub that exfoliates well
+    - Can you find something suitable for oily skin?
+    - I want a deodorant that lasts all day
+    - Show me hair oils for growth
+
+
+- lookup: product_name
+  examples: |
+    - Shampoo Pro
+    - Face Cream X
+    - Toothpaste Z
+    - Face Wash Plus
+    - Lotion Soft
+    - Lip Balm Rose
+    - Herbal Shampoo
+    - Night Cream Glow
+    - Body Lotion Silk
+    - Charcoal Face Wash
+    - Sunsilk conditioner
+    - Nivea cream
+    - Olay moisturizer
+    - Hair Oil Green
+    - Body Wash Ultra
+    - body lotion
+    - skin care 
+    

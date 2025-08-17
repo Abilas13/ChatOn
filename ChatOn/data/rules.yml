@@ -1,0 +1,75 @@
+version: "3.1"
+
+rules:
+
+# --- Product information rules ---
+
+- rule: Get product price
+  steps:
+    - intent: ask_price
+    - action: action_getting_price
+
+- rule: Get product brand
+  steps:
+    - intent: ask_brand
+    - action: action_getting_brand
+
+- rule: Get product description
+  steps:
+    - intent: ask_description
+    - action: action_getting_description
+
+- rule: Get product size
+  steps:
+    - intent: ask_size
+    - action: action_getting_size
+
+
+- rule: Ask about product availability
+  steps:
+    - intent: asking_about_product
+    - action: action_check_availability
+
+
+# --- Product search rule ---
+
+- rule: Search for product
+  steps:
+    - intent: search_product
+    - action: action_search_all_product_tables
+
+
+# --- Feedback handling rules --
+
+
+- rule: Handle feedback with details
+  steps:
+    - intent: give_feedback
+    - action: action_store_feedback
+
+- rule: Get product location
+  steps:
+    - intent: ask_location
+    - action: action_getting_location
+
+- rule: Get product contact
+  steps:
+    - intent: ask_contact
+    - action: action_getting_contact
+
+- rule: Handle sentiment
+  steps:
+    - intent: provide_sentiment
+    - action: action_store_feedback
+
+
+- rule: Summary of feedback
+  steps:
+    - intent: ask_feedback_summary
+    - action: action_query_feedback_summary
+
+
+- rule: Search product by description
+  steps:
+  - intent: search_product_by_description
+  - action: action_search_by_description

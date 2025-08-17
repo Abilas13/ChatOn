@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - {{ username }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #00e0e0, #ff55ff, #ff5e5e, #a020f0);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      background-color: #ffffff;
+    }
+    .card-header {
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      font-weight: 600;
+      font-size: 1.3rem;
+      border-radius: 12px 12px 0 0;
+      padding: 14px 20px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+    label {
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    input.form-control,
+    textarea.form-control {
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-size: 0.95rem;
+      background-color: #fefefe;
+    }
+    input.form-control:focus,
+    textarea.form-control:focus {
+      border-color: #6a11cb;
+      box-shadow: 0 0 6px rgba(106, 17, 203, 0.4);
+    }
+    button.btn-primary,
+    button.btn-success,
+    .btn-outline-info {
+      border-radius: 6px;
+      font-weight: 600;
+      padding: 8px 18px;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+    button.btn-primary {
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      border: none;
+      color: white;
+    }
+    button.btn-primary:hover {
+      background: linear-gradient(90deg, #5011b3, #1d63d6);
+    }
+    .btn-outline-info {
+      border-color: #6a11cb;
+      color: #6a11cb;
+    }
+    .btn-outline-info:hover {
+      background-color: #6a11cb;
+      color: white;
+    }
+    button.btn-success {
+      background-color: #28a745;
+      border: none;
+    }
+    button.btn-success:hover {
+      background-color: #218838;
+    }
+    .btn-danger {
+      border-radius: 6px;
+    }
+    table.table {
+      margin-top: 15px;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    table.table th {
+      background-color: #f1f3f7;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    table.table th, table.table td {
+      vertical-align: middle;
+      font-size: 0.95rem;
+    }
+    .list-group-item {
+      font-size: 0.95rem;
+      background: #fdfdfd;
+    }
+    .list-group-item strong {
+      color: #6a11cb;
+    }
+    h2 {
+      color: #333;
+      font-weight: 600;
+    }
+    a.btn-danger {
+      background-color: #dc3545;
+      border: none;
+      color: white;
+    }
+    a.btn-danger:hover {
+      background-color: #bb2d3b;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Welcome, {{ username }}!</h2>
+    <div>
+      <a href="/chatbot" class="btn btn-outline-info me-2">Chatbot</a>
+      <a href="/logout" class="btn btn-danger">Logout</a>
+    </div>
+  </div>
+
+  <!-- Shop Profile -->
+  <div class="card">
+    <div class="card-header">Shop Profile</div>
+    <div class="card-body">
+      <p><strong>Shop Name:</strong> {{ user.shop_name }}</p>
+      <p><strong>Address:</strong> {{ user.shop_address }}</p>
+      <p><strong>Email:</strong> {{ user.contact_email }}</p>
+      <p><strong>Phone:</strong> {{ user.phone_number }}</p>
+      <p><strong>Description:</strong> {{ user.shop_description }}</p>
+    </div>
+  </div>
+
+  <!-- Add Product Form -->
+  <div class="card">
+    <div class="card-header">Add New Product</div>
+    <div class="card-body">
+      <form method="POST">
+        <div class="row">
+          <div class="col-md-4">
+            <label>Product Name</label>
+            <input type="text" name="product_name" class="form-control" required>
+          </div>
+          <div class="col-md-4">
+            <label>Brand</label>
+            <input type="text" name="brand" class="form-control" required>
+          </div>
+          <div class="col-md-2">
+            <label>Size</label>
+            <input type="text" name="size" class="form-control" required>
+          </div>
+          <div class="col-md-2">
+            <label>Price</label>
+            <input type="number" step="0.01" name="price" class="form-control" required>
+          </div>
+        </div>
+        <div class="mt-3">
+          <label>Description</label>
+          <textarea name="description" class="form-control" rows="2" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Add Product</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Product List -->
+  <div class="card">
+    <div class="card-header">Your Products</div>
+    <div class="card-body">
+      {% if products %}
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Size</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th style="width: 150px;">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+        <tr>
+          <td>{{ product["Product Name"] }}</td>
+          <td>{{ product.Brand }}</td>
+          <td>{{ product.Size }}</td>
+          <td>${{ product.SellPrice }}</td>
+          <td>{{ product.Description }}</td>
+          <td>
+            <a href="/update_product/{{ product.id }}" class="btn btn-sm btn-primary">Edit</a>
+            <form action="/delete_product/{{ product.id }}" method="POST" style="display:inline-block;">
+              <button class="btn btn-sm btn-danger" onclick="return confirm('Delete this product?')">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+        <p>No products yet.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Feedback List -->
+  <div class="card">
+    <div class="card-header">Feedback Received</div>
+    <div class="card-body">
+      {% if feedbacks %}
+      <ul class="list-group">
+  {% for fb in feedbacks %}
+  <li class="list-group-item">
+    <strong>{{ fb.product_name }}</strong> - {{ fb.feedback_text }} <br>
+    <small class="text-muted">{{ fb.created_at }}</small>
+  </li>
+  {% endfor %}
+</ul>
+      {% else %}
+        <p>No feedback yet.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+</body>
+</html>

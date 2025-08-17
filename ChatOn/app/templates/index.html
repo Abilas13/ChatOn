@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #00e0e0, #ff55ff, #ff5e5e, #a020f0);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+    .center-box {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    .center-box h1 {
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      color: #333;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      text-decoration: none;
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .button:hover {
+      background: linear-gradient(90deg, #5011b3, #1d63d6);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <div class="center-box">
+    <h1>Welcome to the ChatOn</h1>
+    <div class="container">
+      <a href="/signup" class="button">Sign Up</a>
+      <a href="/login" class="button">Login</a>
+      <a href="/chatbot" class="button">Chat with Assistant</a>
+    </div>
+  </div>
+</body>
+</html>

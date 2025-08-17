@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Product - {{ product["Product Name"] }}</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00e0e0, #ff55ff, #ff5e5e, #a020f0);
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 22px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .header .links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .header .links a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 6px 0 15px 0;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 15px;
+            background-color: #fefefe;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 6px rgba(106, 17, 203, 0.4);
+            outline: none;
+        }
+
+        form button {
+            padding: 12px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+
+        form button:hover {
+            background: linear-gradient(90deg, #5011b3, #1d63d6);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #6a11cb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Update Product</h1>
+    <div class="links">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Edit details for "{{ product["Product Name"] }}"</h2>
+    <form method="POST">
+        <input name="product_name" placeholder="Product Name" value="{{ product["Product Name"] }}" required>
+        <input name="brand" placeholder="Brand" value="{{ product.Brand }}">
+        <input name="size" placeholder="Size" value="{{ product.Size }}">
+        <input name="price" type="number" step="0.01" placeholder="Price" value="{{ product.SellPrice }}">
+        <textarea name="description" placeholder="Description">{{ product.Description }}</textarea>
+        <button type="submit">Update Product</button>
+    </form>
+    <a href="/dashboard" class="back-link">&larr; Back to Dashboard</a>
+</div>
+
+</body>
+</html>

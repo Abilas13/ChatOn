@@ -1,0 +1,122 @@
+version: "3.1"
+
+session_config:
+  session_expiration_time: 60  # 60 minutes
+  carry_over_slots_to_new_session: true
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - thanks
+
+  # Product inquiries
+  - ask_price
+  - ask_brand
+  - ask_size
+  - ask_description
+  - ask_location
+  - ask_contact
+  - search_product
+  - product_info
+  - asking_about_product
+
+  # Feedback
+  - give_feedback
+  - ask_feedback_summary     # e.g., "What do people think about this product?"
+  - provide_sentiment        # e.g., "It was positive", "I didn't like it"
+  - inform                   # Generic info, e.g., "I love this product"
+  - search_product_by_description
+entities:
+  - product_name
+  - sentiment
+
+slots:
+  product_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: product_name
+        default_value: null
+
+
+  user_id:
+    type: text
+    mappings:
+      - type: custom
+        # Set dynamically when identifying supplier/user
+
+  table_name:
+    type: text
+    mappings:
+      - type: custom
+        # Determined during dynamic table access
+
+  feedback:
+    type: text
+    mappings:
+      - type: from_text
+        # Captures free-text feedback input
+
+  sentiment:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: sentiment
+        # If not extracted automatically, you can set manually
+
+responses:
+  # Greetings and small talk
+  utter_greet:
+    - text: "Hey! How are you? How can I help you today?"
+  utter_goodbye:
+    - text: "Bye! Have a wonderful day."
+  utter_happy:
+    - text: "Great, carry on!"
+  utter_cheer_up:
+    - text: "Here is something to cheer you up: 😊"
+  utter_did_that_help:
+    - text: "Did that help you?"
+  utter_welcome:
+    - text: "You're welcome!"
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+  # Product inquiries
+  utter_ask_product_name:
+    - text: "What is the name of the product?"
+  utter_ask_product:
+    - text: "Which product are you looking for?"
+  utter_no_product_found:
+    - text: "Sorry, I couldn't find any product by that name. Could you check the spelling?"
+  utter_offer_more_options:
+    - text: "Would you like to know anything else about this product ?"
+
+  utter_ask_sentiment:
+    - text: "How would you rate your experience? Was it positive, negative, or neutral?"
+
+  utter_no_feedback_found:
+    - text: "There is no feedback for this product yet."
+  utter_feedback_summary_positive:
+    - text: "Most customers were satisfied with this product."
+  utter_feedback_summary_negative:
+    - text: "Many customers reported negative experiences with this product."
+  utter_feedback_summary_mixed:
+    - text: "The feedback for this product is mixed."
+
+actions:
+  - action_getting_price
+  - action_getting_brand
+  - action_getting_description
+  - action_getting_size
+  - action_check_availability
+  - action_store_feedback
+  - action_query_feedback_summary
+  - action_search_all_product_tables
+  - action_getting_location
+  - action_getting_contact
+  - action_search_by_description

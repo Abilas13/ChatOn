@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00e0e0, #ff55ff, #ff5e5e, #a020f0);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+
+
+}
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 90%;
+            background-color: #fff;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 12px;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background-color: #f1f4f9;
+        }
+
+        .nav-links {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            color: white;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: linear-gradient(90deg, #5011b3, #1d63d6);
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+
+    <h2>Users</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.role }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="nav-links">
+        <a href="/dashboard">Back to Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
