@@ -1,2 +1,6 @@
 # ChatOn
  A web-based platform which is a multiusers platform with a chat assistant that provides instant responses to customer inquiries.  
+
+This project outlines a detailed design and development plan for an advanced web-based product assistant system, also known as “ChatOn”, meticulously crafted to cater to multiple users. At the heart of this initiative lies a sophisticated intelligent chatbot, specifically engineered to elevate the experience of selling small industrial products.
+Utilizing the robust capabilities of Flash for its backend infrastructure, the system seamlessly integrates with Rasa as the dynamic chatbot engine. This powerful combination empowers users to effortlessly create, customize, and manage an extensive array of personalized product catalogs, all securely stored in a centralized MySQL database.
+The chatbot boasts a suite of advanced functionalities, enabling it to adeptly navigate user-specific product tables with finesse. It skillfully responds to a wide variety of inquiries, ranging from product availability and pricing to brand details, in-depth descriptions, size specifications, location insights, and contact information. This comprehensive approach ensures that users receive a streamlined, informative, and engaging experience, thereby enhancing their overall interaction with the product offerings.
